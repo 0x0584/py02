@@ -18,10 +18,12 @@ class TinyStatistician(object):
         return None if type(X) != list or len(X) == 0 else sum(X) / len(X)
 
     def percentile(X, p):
-        X = sorted(X)
-        i = int((p/100)*len(X))
-        val = X[i]
-        if len(X) % 2 == 0 and i > 0:
+        if len(X) == 0:
+            return None
+        X = sorted(X) # sort the range
+        i = int((p / 100) * len(X)) # find the percentile index
+        val = X[i] # get value of the percentile
+        if len(X) % 2 == 0: #take the mid value in case the precentile is even 
             val += X[i - 1]
             val /= 2
         return float(val)
@@ -37,17 +39,11 @@ class TinyStatistician(object):
     
     def var(X):
         mean = TinyStatistician.mean(X)
-        if mean is None:
-            return None
-        else:
-            return sum([float(x - mean) ** 2 for x in X]) / len(X)
+        return None if mean is None else sum([float(x - mean) ** 2 for x in X]) / len(X)
 
     def std(X):
         var = TinyStatistician.var(X)
-        if var is None:
-            return None
-        else:
-            return float(sqrt(var))
+        return None if var is None else float(sqrt(var))
 
 if __name__ == '__main__':
     A = [1, 42, 300, 10, 59]

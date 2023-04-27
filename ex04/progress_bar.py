@@ -6,9 +6,11 @@
 #    By: archid- <archid-@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/18 09:25:26 by archid-           #+#    #+#              #
-#    Updated: 2023/04/18 09:25:39 by archid-          ###   ########.fr        #
+#    Updated: 2023/04/27 15:37:36 by archid-          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-def progress_bar():
-    pass
+import time
+
+def ft_progress(lst):
+    return lst

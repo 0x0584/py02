@@ -6,7 +6,7 @@
 #    By: archid- <archid-@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/02 06:36:10 by archid-           #+#    #+#              #
-#    Updated: 2023/04/18 13:36:24 by archid-          ###   ########.fr        #
+#    Updated: 2023/04/26 21:01:42 by archid-          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,16 +22,18 @@ def ft_map(function_to_apply, iterable):
         yield function_to_apply(val)
 
 if __name__ == '__main__':
-    l = list(ft_map(lambda x: x ** 2, [1, 2, 3]))
-    for v in l:
-        print(v)
-    try:
-        ft_map(lambda x: x, None)
-        assert False
-    except:
-        assert True    
-    try:
-        ft_map(lambda x: x, 1)
-        assert False
-    except:
-        assert True
+    def map_test(func, arr):
+        assert list(map(func, arr)) == list(ft_map(func, arr))
+
+    map_test(lambda foo: not (foo % 2), [1, 2, 3, 4, 5])
+    map_test(lambda foo: not (foo % 2), [1, 3, 5])
+    map_test(lambda foo: not (foo % 2), [2, 4])
+    map_test(lambda foo: (foo % 2), [1, 2, 3, 4, 5])
+    map_test(lambda foo: (foo % 2), [1, 3, 5])
+    map_test(lambda foo: (foo % 2), [2, 4])
+    map_test(lambda foo: foo, [])
+    # map_test(lambda foo: foo, None)
+    # map_test(lambda foo: foo, 1)
+    map_test(lambda foo: foo, {1, 2, 3, 4, 5})
+    map_test(lambda foo: foo, {"0": 1, "1": 2, "3": 2})
+    print(">>> All tests passed!")

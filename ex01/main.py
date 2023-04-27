@@ -6,36 +6,32 @@
 #    By: archid- <archid-@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/02 10:02:37 by archid-           #+#    #+#              #
-#    Updated: 2023/04/02 10:23:38 by archid-          ###   ########.fr        #
+#    Updated: 2023/04/27 15:51:32 by archid-          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 class ObjectC(object):
     def __init__(self):
-        self.var_0 = 1
-        self.var_1 = 2
+        pass
 
 def what_are_the_vars(*args, **kwargs):
     c = ObjectC()
-
     var_i = 0
     for val in args:
         var_name = 'var_' + str(var_i)
-        while True:
-            try:
-                getattr(c, var_name)
-                var_i += 1
-                var_name = 'var_' + var_i
-            except:
-                break
+        var_i += 1
+        try:
+            getattr(c, var_name)
+        except:
+            return None
         setattr(c, var_name, val)
 
     for var in kwargs.keys():
         try:
             getattr(c, var)
-            raise ValueError()
         except:
-            setattr(c, var, kwargs[var])
+            return None
+        setattr(c, var, kwargs[var])
     return c
 
 def doom_printer(obj):

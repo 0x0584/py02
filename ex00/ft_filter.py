@@ -6,7 +6,7 @@
 #    By: archid- <archid-@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/02 07:07:32 by archid-           #+#    #+#              #
-#    Updated: 2023/04/18 13:34:16 by archid-          ###   ########.fr        #
+#    Updated: 2023/04/26 20:59:30 by archid-          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,8 +22,19 @@ def ft_filter(function_to_apply, iterable):
     for val in iter(iterable):
         if function_to_apply(val):
             yield val
-            
+
 if __name__ == '__main__':
-    arr = [1, 2, 3, 4, 5]
-    func = lambda foo: not (foo % 2)
-    assert list(filter(func, arr)) == list(ft_filter(func, arr))
+    def filter_test(func, arr):
+        assert list(filter(func, arr)) == list(ft_filter(func, arr))
+    filter_test(lambda foo: not (foo % 2), [1, 2, 3, 4, 5])
+    filter_test(lambda foo: not (foo % 2), [1, 3, 5])
+    filter_test(lambda foo: not (foo % 2), [2, 4])
+    filter_test(lambda foo: (foo % 2), [1, 2, 3, 4, 5])
+    filter_test(lambda foo: (foo % 2), [1, 3, 5])
+    filter_test(lambda foo: (foo % 2), [2, 4])
+    filter_test(lambda foo: foo, [])
+    # filter_test(lambda foo: foo, None)
+    # filter_test(lambda foo: foo, 1)
+    filter_test(lambda foo: foo, {1, 2, 3, 4, 5})
+    filter_test(lambda foo: foo, {"0": 1, "1": 2, "3": 2})
+    print(">>> All tests passed!")

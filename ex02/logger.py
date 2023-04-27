@@ -6,14 +6,13 @@
 #    By: archid- <archid-@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/02 10:25:17 by archid-           #+#    #+#              #
-#    Updated: 2023/04/04 21:30:11 by archid-          ###   ########.fr        #
+#    Updated: 2023/04/26 21:32:12 by archid-          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-from functools import wraps
 import time
 from random import randint
-import os
+from functools import wraps
 
 def log(func):
     @wraps(func)
